@@ -1,10 +1,13 @@
 const express = require('express');
+const mongoose = require('mongoose');
 
 const app = express();
 
-app.get('/', (request, response) => {
-  return response.send('Hello World');
+mongoose.connect('URL', {
+  useNewUrlParser: true,
 });
+
+app.use(require('./routes'));
 
 app.listen(3000, () => {
   console.log('Server started on port 3000');
